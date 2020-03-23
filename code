@@ -1,0 +1,539 @@
+<!--
+
+╭━━━┳╮╱╭┳━━━┳━━━┳━━━━┳╮╱╭┳━━━┳━╮╭━┳━━━┳━━━╮
+┃╭━╮┃┃╱┃┃╭━━┫╭━╮┃╭╮╭╮┃┃╱┃┃╭━━┫┃╰╯┃┃╭━━┫╭━╮┃
+┃╰━━┫╰━╯┃╰━━┫┃╱┃┣╯┃┃╰┫╰━╯┃╰━━┫╭╮╭╮┃╰━━┫╰━━╮
+╰━━╮┃╭━╮┃╭━━┫╰━╯┃╱┃┃╱┃╭━╮┃╭━━┫┃┃┃┃┃╭━━┻━━╮┃
+┃╰━╯┃┃╱┃┃╰━━┫╭━╮┃╱┃┃╱┃┃╱┃┃╰━━┫┃┃┃┃┃╰━━┫╰━╯┃
+╰━━━┻╯╱╰┻━━━┻╯╱╰╯╱╰╯╱╰╯╱╰┻━━━┻╯╰╯╰┻━━━┻━━━╯
+
+page ⎾SCINTILLA⏌ by sheathemes @ tumblr
+
+- TERMS -
+
+I. Do NOT remove my credit from the index page. Keep it exactly where it is
+II. Do NOT take any part of my code to use for your personal designs
+III. Do NOT claim any part of my code as your own
+IV. NO redistrubuting of any of my code
+V. Editing is allowed. As long as it's NOT being claimed as your own
+ 
+CREDITS
+ 
+> Style-my-Tootips: http://manos.malihu.gr/style-my-tooltips-jquery-plugin/
+
+> Smoothscroll script: https://cdnjs.com/libraries/smoothscroll
+
+> Javascript accordian: https://www.w3schools.com/howto/howto_js_accordion.asp
+
+> Material icons: https://material.io/resources/icons/?style=baseline
+
+!-->
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ 
+<head>
+
+<!--Custom Fonts-->
+<link href="https://fonts.googleapis.com/css?family=Exo:300,300i,400,400i,500,500i|Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito+Sans:300,300i,400,400i,600,600i,700,700i|Titillium+Web:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i|Oxygen:300,400,700|Arimo:400,400i,700,700i|Lato:300,300i,400,400i,700,700i|Karla:400,400i,700,700i|Montserrat:300,300i,400,400i,500,500i" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+<!--Custom Fonts-->
+ 
+<!--Homelinks Icons-->
+<link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+<!--Homelinks Icons-->
+ 
+    <title>{Title}</title>
+    <link rel="shortcut icon" href="{Favicon}">
+    <link rel="altertnate" type="application/rss+xml" href="{RSS}">
+    <meta http-equiv="x-dns-prefetch-control" content="off"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.6/SmoothScroll.min.js"></script>
+
+<style type="text/css">
+
+/*------
+ 
+CUSTOMIZATION OPTIONS HERE. HERE YOU CAN GE EVERYTHING FROM THE COLORS TO THE OVERALL FONT SIZE TO YOUR LIKING!
+ 
+------ */
+
+:root {
+    --accented-text: #E8175D;
+    --main-background: #ffffff;
+    --main-font: 13px;
+    --bolded: #000000;
+    --main-links: #FFB884;
+    --scrollbar: #E8175D;
+    --text-selection-background: #E8175D;
+    --text-selection: #fff;
+    --tooltip: #fff;
+    --tooltip-background: #A8A7A7;
+    --side-banner: #A8A7A7;
+    --sidebar-front: #474747;
+    --sidebar-back: #E8175D;
+    --post-borders: #f6f6f6;
+}
+ 
+/*----------FADE-IN ANIMATION----------*/
+ 
+@keyframes fadein {
+    from {opacity:0;}
+    to {opacity:1;}
+}
+ 
+@-moz-keyframes fadein { /* Firefox */
+    from {opacity:0;}
+    to {opacity:1;}
+}
+ 
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {opacity:0;}
+    to {opacity:1;}
+}
+ 
+@-o-keyframes fadein { /* Opera */
+    from {opacity:0;}
+    to {opacity: 1;}
+}
+ 
+/*----------TUMBLR CONTROLS----------*/
+ 
+iframe#tumblr_controls, .iframe-controls--desktop {
+    right: 10px !important;
+    top: 25px !important;
+    position: fixed !important;
+    z-index: 99999999999999999999 !important;
+    -webkit-filter: invert(100%);
+    -moz-filter: invert(100%);
+    -o-filter: invert(100%);
+    -webkit-transition: opacity 0.4s linear;opacity: 0.4;
+    -webkit-transition: all 0.8s ease-out;
+    -moz-transition: all 0.8s ease-out;
+    transition: all 0.8s ease-out;
+    display: none;
+}
+ 
+/*----------SCROLLBAR----------*/
+ 
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar);
+    border-radius: 6px;
+    -webkit-box-shadow: inset 0 0 3px var(--box-shadow);
+    -moz-box-shadow: inset 0 0 3px var(--box-shadow);
+    box-shadow: inset 0 0 3px var(--box-shadow);
+}
+ 
+::-webkit-scrollbar-track {
+    background: var(--side-banner);
+    border-radius: 6px;
+    -webkit-box-shadow: inset 0 0 3px var(--box-shadow);
+    -moz-box-shadow: inset 0 0 3px var(--box-shadow);
+    box-shadow: inset 0 0 3px var(--box-shadow);
+}
+ 
+ 
+/*----------TOOLTIPS----------*/
+ 
+#s-m-t-tooltip {
+    max-width:300px;
+    padding:2px 5px;
+    margin: -20px 7px -2px 20px;
+    background-color: var(--tooltip-background);
+    font-size:9px;
+    letter-spacing:2px;
+    text-transform:lowercase;
+    color: var(--tooltip);  
+    z-index:999999999999999999999999999999999999;
+}
+ 
+/*----------TEXT SELECTION----------*/
+::selection {
+    background: var(--text-selection-background); /*change the color of the text selection background*/
+    color: var(--text-selection); /*change the color of the text selection*/
+}
+ 
+::-moz-selection {
+    background: var(--text-selection-background); /*change the color of the text selection background*/
+    color: var(--text-selection); /*change the color of the text selection*/
+}
+ 
+::-webkit-selection {
+    background: var(--text-selection-background); /*change the color of the text selection background*/
+    color: var(--text-selection); /*change the color of the text selection*/
+}
+ 
+/*----------THEME BASICS----------*/
+
+body {
+    color: #888;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: var(--main-font);
+    line-height: 180%;
+    margin: 0;
+    text-align: justify;
+    background: var(--main-background) url("") center; /*change the color of the main background and add a background image between the quotations*/
+    background-attachment: fixed;
+    background-repeat: repeat;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    animation: fadein 2.5s;
+    -moz-animation: fadein 2.5s; /* Firefox */
+    -webkit-animation: fadein 2.5s; /* Safari and Chrome */
+    -o-animation: fadein  2.5s; /* Opera */
+}
+ 
+b,strong {
+    color:var(--bolded);
+    font-weight: 700;
+}
+ 
+i,em {
+    color:var(--text);
+}
+ 
+u {
+    color:var(--bolded);
+}
+ 
+hr {
+    width: 30%;
+    height: 1px;
+    background-color: var(--about-me-text);
+    color: var(--about-me-text);
+    border: 0px solid transparent;
+}
+
+h1,h2,h3 {
+    font-weight: 700;
+    font-size: 2em;
+    color: var(--bolded);
+}
+ 
+small,sub,sup {
+    font-size: 10px;
+}
+ 
+a {
+    color: var(--main-links);
+    text-decoration:none;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+}
+ 
+a:hover {
+    color: var(--link-hover);
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+}
+
+/*----------SIDEBAR----------*/
+
+#side-banner {
+    width: 240px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--side-banner);
+}
+
+#sidebar-image {
+    position: relative;
+    display: block;
+    top: 50%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    background-color: var(--sidebar-back);
+    background-image: url("https://static.tumblr.com/uh2chis/CEnq7nx5i/faq-sidebar.png");
+    width: 300px;
+    height: 400px;
+}
+
+#sidebar-image:after {
+    content: '';
+    position: absolute;
+    left: 16px;
+    top: 15px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--sidebar-front);
+    background-image: url("https://static.tumblr.com/uh2chis/jA5q7ny2z/faq-sidebar-2.png");
+}
+
+/*----------MAIN CONTAINER----------*/
+
+.faq-container {
+    position: relative;
+    margin: 130px 0 70px 520px;
+    width: 540px;
+}
+
+/*----------FAQ HEADER----------*/
+
+#faq-main-title {
+    font-size: 2.0em;
+    font-weight: 600;
+    color: var(--bolded);
+    text-transform: uppercase;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.material-icons-outlined {
+    margin: 0 10px;
+    color: var(--accented-text);
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+}
+
+.material-icons-outlined:hover {
+    color: var(--bolded);
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+}
+
+.description {
+    margin: -70px 0 75px 0;
+}
+
+/*----------FAQ CONTENT----------*/
+
+.faq-item {
+    padding: 0 20px;
+    margin: 50px 0;
+}
+
+.faq-header {
+    border-radius: 40px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: -6px -6px 20px rgba(255,255,255,1),
+                6px 6px 20px rgba(0,0,0,0.1);
+}
+
+.faq-header:hover {
+    box-shadow: inset -6px -6px 10px rgba(255,255,255,0.5),
+                inset 6px 6px 20px rgba(0,0,0,0.05);
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+}
+
+.faq-title {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.faq-header:after {
+    content: '\002B';
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--post-borders);
+    color: var(--bolded);
+    border-radius: 50%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 20px;
+    margin-left: 30px;
+}
+
+.question {
+    margin-top: 30px;
+    padding: 0 20px;
+    max-height: 0;
+    border-radius: 40px;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.active:after {
+    content: "\2212";
+}
+
+/*----------FAQ FOOTER----------*/
+
+.ask-box-title {
+    font-size: 1.4em;
+}
+
+.ask-box-text {
+    margin: 60px 0 40px 0;
+}
+ 
+/*----------THEME CREDIT/DO NOT REMOVE!!!---------*/
+ 
+#bottom {
+    bottom: 25px;
+    position: fixed;
+    right: 70px;
+    background-color: var(--side-banner);
+    border-radius: 5px;
+}
+ 
+.cred {
+    padding: 5px;
+    width: auto;
+    height: 15px;
+    font-size: 15px;
+    line-height: 15px;
+    display: inline-block;
+    color: var(--tooltip);
+    z-index: 999;
+}
+ 
+.cred:hover {
+    color: var(--bolded);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="side-banner"> <!----------- SIDEBAR ----------->
+    <div id="sidebar-image"></div>
+</div> <!----------- SIDEBAR ----------->
+
+<article class="faq-container"> <!----------- FAQ CONTAINER ----------->
+<!----------- FAQ HEADER ----------->
+<header id="faq-main-title">faq page <!--FAQ title here-->
+       <nav class="homelinks"> <!----------- HOMELINKS ----------->
+        <a href="/" title="home"><span class="material-icons-outlined">home</span></a>  
+        <a href="/submit" title="submit"><span class="material-icons-outlined">card_giftcard</span></a>
+        <a href="/archive" title="archive"><span class="material-icons-outlined">event_note</span></a>
+        <!--custom links here (below)-->
+        <a href="/" title="link 1"><span class="material-icons-outlined">add_box</span></a>
+        <a href="/" title="link 2"><span class="material-icons-outlined">add_box</span></a>
+        <a href="/" title="link 3"><span class="material-icons-outlined">add_box</span></a>
+        <!--custom links here (above)-->
+    </nav>  <!----------- HOMELINKS ----------->
+</header> 
+
+    <p class="description">
+    
+    <!----------- Your FAQ description goes here (below) ----------->
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam nisi lorem, pulvinar id, commodo feugiat, vehicula et, mauris. Aliquam mattis porta urna. Maecenas dui neque, rhoncus sed, vehicula vitae, auctor at, nisi. Aenean id massa ut lacus molestie porta. Curabitur sit amet quam id libero suscipit venenatis.
+    <!----------- Your FAQ description goes here (above) ----------->
+    </p> <!----------- FAQ HEADER ----------->
+    
+    <!----------- FAQ CONTENT ----------->
+    
+    <!------------ If you need to add another question/answer section, use the code below... 
+    
+     <section class="faq-item"> 
+        <section class="faq-header">
+            <h1 class="faq-title">This is question 1</h1>
+        </section>
+        <p class="question">Here is your answer to your question</p>
+    </section>
+    
+...and paste it below this greyed out section ------------>
+    
+    <section class="faq-item"> 
+        <section class="faq-header">
+            <h1 class="faq-title">This is question 1</h1>
+        </section>
+        <p class="question">Here is your answer to your question</p>
+    </section>
+    
+    <section class="faq-item">
+        <section class="faq-header">
+            <h1 class="faq-title">This is question 2</h1>
+        </section>
+        <p class="question">Here is your answer to your question</p>
+    </section>
+    
+    <section class="faq-item">
+        <section class="faq-header">
+            <h1 class="faq-title">This is question 3</h1>
+        </section>
+        <p class="question">Here is your answer to your question</p>
+    </section>
+    
+    <section class="faq-item">
+        <section class="faq-header">
+            <h1 class="faq-title">This is question 4</h1>
+        </section>
+        <p class="question">Here is your answer to your question</p>
+    </section>
+    
+    <section class="faq-item">
+        <section class="faq-header">
+            <h1 class="faq-title">This is question 5</h1>
+        </section>
+        <p class="question">Here is your answer to your question</p>
+    </section> 
+    
+    <!----------- FAQ CONTENT ----------->
+    
+    <p class="ask-box-text"> <!----------- FAQ FOOTER ----------->
+    <h1 class="ask-box-title"> <!-- add ending heading here (start) --> If your question has not been asked...<!-- add ending heading here (end)--> </h1>
+    <!--Ending message here (below)-->
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam nisi lorem, pulvinar id, commodo feugiat, vehicula et, mauris. Aliquam mattis porta urna. Maecenas dui neque, rhoncus sed, vehicula vitae, auctor at, nisi. Aenean id massa ut lacus molestie porta. Curabitur sit amet quam id libero suscipit venenatis.
+    <!--Ending message here (above)-->
+    </p>
+    
+    <p><iframe frameborder="0" height="auto" id="ask_form" scrolling="no" src="http://www.tumblr.com/ask_form/shea-testblog.tumblr.com" width="100%" style="background-color: transparent; overflow: hidden; margin-top:40px"></iframe><!--[if IE]><script type="text/javascript">document.getElementById('ask_form').allowTransparency=true;</script><![endif]--></p> <!----------- FAQ FOOTER ----------->
+</article> <!----------- FAQ CONTAINER ----------->
+
+<footer id="bottom">
+<!-------------------DO NOT REMOVE THEME CREDIT!!!------------------->
+ <a href="https://sheathemes.tumblr.com" class="cred" title="theme by sheathemes">&#169;</a>  
+<!-------------------DO NOT REMOVE THEME CREDIT!!!------------------->
+</footer>
+
+<!-----------Tooltips Script----------->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script src="http://static.tumblr.com/iuw14ew/VSQma1786/jquery.style-my-tooltips.js"></script>
+<script src="http://static.tumblr.com/pbhn8p5/uhVos7fkg/tooltips.js"></script>
+<!-----------Tooltips Script----------->
+
+<script>
+
+// accordian script
+    var acc = document.getElementsByClassName("faq-header");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+        } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+        } 
+    });
+    }
+</script>  
+
+</body>
+</html> <!---------------------------END--------------------------->
